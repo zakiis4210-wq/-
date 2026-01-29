@@ -1,6 +1,3 @@
-"use client";
-
-import { useEffect, useMemo } from "react";
 import Link from "next/link";
 import recipes from "@/data/recipes.json";
 import { getRecipeMatch, getPantryNames } from "@/lib/recipe";
