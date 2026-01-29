@@ -1,142 +1,37 @@
-"use client";
+Run npm run build
 
-import { useEffect, useMemo } from "react";
-import Link from "next/link";
-import { useParams } from "next/navigation";
-import recipes from "@/data/recipes.json";
-import { useStore } from "@/store/useStore";
-import { getRecipeMatch, getPantryNames } from "@/lib/recipe";
+> build
+> next build
 
-const normalizeDifficulty = (d: string): "easy" | "normal" | "hard" => {
-  if (d === "easy" || d === "normal" || d === "hard") return d;
-  return "normal";
-};
+⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
 
-const normalizeCuisine = (c: string): "jp" | "western" | "chinese" | "other" => {
-  if (c === "jp" || c === "western" || c === "chinese" || c === "other") return c;
-  return "other";
-};
+  ▲ Next.js 14.2.5
 
-export default function RecipeDetailPage() {
-  const params = useParams();
-  const recipeId = Array.isArray(params.id) ? params.id[0] : params.id;
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
 
-  const pantryItems = useStore((state) => state.pantryItems);
-  const favorites = useStore((state) => state.favorites);
-  const toggleFavorite = useStore((state) => state.toggleFavorite);
-  const addRecent = useStore((state) => state.addRecent);
+   We detected TypeScript in your project and reconfigured your tsconfig.json file for you. Strict-mode is set to false by default.
+   The following suggested values were added to your tsconfig.json. These values can be changed to fit your project's needs:
 
-  const recipe = useMemo(() => recipes.find((item) => item.id === recipeId), [recipeId]);
-  const pantryNames = useMemo(() => getPantryNames(pantryItems), [pantryItems]);
+   	- include was updated to add '.next/types/**/*.ts'
+   	- plugins was updated to add { name: 'next' }
 
-  useEffect(() => {
-    if (recipeId) {
-      addRecent(recipeId);
-    }
-  }, [recipeId, addRecent]);
+   Collecting page data ...
 
-  if (!recipe) {
-    return (
-      <main className="container-page space-y-6">
-        <Link className="button-secondary" href="/recipes">
-          一覧へ戻る
-        </Link>
-        <p className="text-sm text-slate-500">レシピが見つかりませんでした。</p>
-      </main>
-    );
-  }
-
-  // ✅ difficulty / cuisine を union 型に正規化してから getRecipeMatch に渡す
-  const match = getRecipeMatch(
-    {
-      ...recipe,
-      difficulty: normalizeDifficulty(recipe.difficulty),
-      cuisine: normalizeCuisine(recipe.cuisine),
-    },
-    pantryItems
-  );
-
-  const isFavorite = favorites.includes(recipe.id);
-
-  return (
-    <main className="container-page space-y-6">
-      <section className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold">{recipe.title}</h1>
-          <p className="text-sm text-slate-600">
-            一致度 {match.matchScore}% / {recipe.cookTimeMin}分
-          </p>
-        </div>
-        <Link className="button-secondary" href="/recipes">
-          一覧へ
-        </Link>
-      </section>
-
-      <section className="card space-y-4">
-        <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">材料</h2>
-          <button
-            className={isFavorite ? "button-primary" : "button-secondary"}
-            onClick={() => toggleFavorite(recipe.id)}
-            type="button"
-          >
-            {isFavorite ? "お気に入り済み" : "お気に入り"}
-          </button>
-        </div>
-
-        <div className="space-y-3">
-          {recipe.ingredients.map((ingredient) => {
-            const hasItem = pantryNames.has(ingredient.name.trim().toLowerCase());
-            return (
-              <div
-                key={`${recipe.id}-${ingredient.name}`}
-                className={`flex items-center justify-between rounded-2xl border px-4 py-3 ${
-                  hasItem ? "border-emerald-200 bg-emerald-50" : "border-rose-200 bg-rose-50"
-                }`}
-              >
-                <div>
-                  <p className="font-semibold">{ingredient.name}</p>
-                  <p className="text-xs text-slate-500">
-                    {ingredient.required ? "必須" : "任意"}
-                    {ingredient.quantity ? ` ・ ${ingredient.quantity}` : ""}
-                  </p>
-                </div>
-                <span className="text-xs font-semibold">{hasItem ? "ある" : "ない"}</span>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="card space-y-3">
-        <h2 className="text-lg font-semibold">不足材料と代替候補</h2>
-        {match.missingIngredients.length === 0 ? (
-          <p className="text-sm text-slate-500">不足材料はありません。</p>
-        ) : (
-          <div className="space-y-3">
-            {match.missingIngredients.map((ingredient) => (
-              <div key={ingredient} className="rounded-2xl border border-slate-200 p-4">
-                <p className="font-semibold">{ingredient}</p>
-                <p className="text-xs text-slate-500">
-                  代替:{" "}
-                  {match.substitutes[ingredient]?.length
-                    ? match.substitutes[ingredient].join(" / ")
-                    : "なし"}
-                </p>
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section className="card space-y-3">
-        <h2 className="text-lg font-semibold">手順</h2>
-        <ol className="list-decimal space-y-2 pl-4 text-sm text-slate-600">
-          {recipe.steps.map((step, index) => (
-            <li key={`${recipe.id}-step-${index}`}>{step}</li>
-          ))}
-        </ol>
-      </section>
-    </main>
-  );
-}
+> Build error occurred
+Error: Page "/recipes/[id]" is missing "generateStaticParams()" so it cannot be used with "output: export" config.
+    at /home/runner/work/-/-/node_modules/next/dist/build/index.js:1294:59
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Span.traceAsyncFn (/home/runner/work/-/-/node_modules/next/dist/trace/trace.js:154:20)
+    at async Promise.all (index 7)
+    at async /home/runner/work/-/-/node_modules/next/dist/build/index.js:1172:17
+    at async Span.traceAsyncFn (/home/runner/work/-/-/node_modules/next/dist/trace/trace.js:154:20)
+    at async /home/runner/work/-/-/node_modules/next/dist/build/index.js:1095:124
+    at async Span.traceAsyncFn (/home/runner/work/-/-/node_modules/next/dist/trace/trace.js:154:20)
+    at async build (/home/runner/work/-/-/node_modules/next/dist/build/index.js:366:9)
+Error: Process completed with exit code 1.
