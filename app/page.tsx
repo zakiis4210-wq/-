@@ -5,6 +5,11 @@ import recipes from "@/data/recipes.json";
 import { useStore } from "@/store/useStore";
 import { getRecipeMatch } from "@/lib/recipe";
 
+const normalizeDifficulty = (d: string): "easy" | "normal" | "hard" => {
+  if (d === "easy" || d === "normal" || d === "hard") return d;
+  return "normal";
+};
+
 export default function HomePage() {
   const pantryItems = useStore((state) => state.pantryItems);
   const filters = useStore((state) => state.filters);
@@ -98,7 +103,12 @@ export default function HomePage() {
         ) : (
           <div className="space-y-3">
             {recentRecipes.map((recipe) => {
-              const match = getRecipeMatch(recipe, pantryItems);
+              // ✅ difficulty を union 型に正規化してから渡す
+              const match = getRecipeMatch(
+                { ...recipe, difficulty: normalizeDifficulty(recipe.difficulty) },
+                pantryItems
+              );
+
               return (
                 <Link
                   key={recipe.id}
@@ -109,7 +119,9 @@ export default function HomePage() {
                     <h3 className="font-semibold">{recipe.title}</h3>
                     <span className="text-sm font-semibold text-slate-700">{match.matchScore}%</span>
                   </div>
-                  <p className="text-xs text-slate-500">不足 {match.missingIngredients.length} / 時間 {recipe.cookTimeMin}分</p>
+                  <p className="text-xs text-slate-500">
+                    不足 {match.missingIngredients.length} / 時間 {recipe.cookTimeMin}分
+                  </p>
                 </Link>
               );
             })}
@@ -129,7 +141,12 @@ export default function HomePage() {
         ) : (
           <div className="space-y-3">
             {favoriteRecipes.map((recipe) => {
-              const match = getRecipeMatch(recipe, pantryItems);
+              // ✅ ここも同じく正規化してから渡す
+              const match = getRecipeMatch(
+                { ...recipe, difficulty: normalizeDifficulty(recipe.difficulty) },
+                pantryItems
+              );
+
               return (
                 <Link
                   key={recipe.id}
@@ -140,7 +157,9 @@ export default function HomePage() {
                     <h3 className="font-semibold">{recipe.title}</h3>
                     <span className="text-sm font-semibold text-slate-700">{match.matchScore}%</span>
                   </div>
-                  <p className="text-xs text-slate-500">不足 {match.missingIngredients.length} / 時間 {recipe.cookTimeMin}分</p>
+                  <p className="text-xs text-slate-500">
+                    不足 {match.missingIngredients.length} / 時間 {recipe.cookTimeMin}分
+                  </p>
                 </Link>
               );
             })}
