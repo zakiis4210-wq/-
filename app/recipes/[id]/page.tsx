@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import recipes from "@/data/recipes.json";
 import { getRecipeMatch, getPantryNames } from "@/lib/recipe";
