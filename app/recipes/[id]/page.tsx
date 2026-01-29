@@ -1,37 +1,58 @@
-Run npm run build
+"use client";
 
-> build
-> next build
+import { useEffect, useMemo } from "react";
+import Link from "next/link";
+import { useParams } from "next/navigation";
+import recipes from "@/data/recipes.json";
+import { useStore } from "@/store/useStore";
+import { getRecipeMatch, getPantryNames } from "@/lib/recipe";
 
-⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
+export function generateStaticParams() {
+  return recipes.map((r) => ({ id: r.id }));
+}
 
-  ▲ Next.js 14.2.5
+const normalizeDifficulty = (d: string): "easy" | "normal" | "hard" =>
+  d === "easy" || d === "normal" || d === "hard" ? d : "normal";
 
-   Creating an optimized production build ...
-Failed to compile.
+const normalizeCuisine = (c: string): "jp" | "western" | "chinese" | "other" =>
+  c === "jp" || c === "western" || c === "chinese" || c === "other" ? c : "other";
 
-./app/recipes/[id]/page.tsx
-Error: 
-  x Expected ';', '}' or <eof>
-   ,-[/home/runner/work/-/-/app/recipes/[id]/page.tsx:1:1]
- 1 | Run npm run build
-   : ^|^ ^^^
-   :  `-- This is the expression part of an expression statement
- 2 | 
- 3 | > build
- 4 | > next build
-   `----
+export default function RecipeDetailPage() {
+  const params = useParams();
+  const recipeId = Array.isArray(params.id) ? params.id[0] : params.id;
 
-Caused by:
-    Syntax Error
+  const pantryItems = useStore((s) => s.pantryItems);
+  const favorites = useStore((s) => s.favorites);
+  const toggleFavorite = useStore((s) => s.toggleFavorite);
+  const addRecent = useStore((s) => s.addRecent);
 
-Import trace for requested module:
-./app/recipes/[id]/page.tsx
+  const recipe = useMemo(
+    () => recipes.find((r) => r.id === recipeId),
+    [recipeId]
+  );
 
+  const pantryNames = useMemo(
+    () => getPantryNames(pantryItems),
+    [pantryItems]
+  );
 
-> Build failed because of webpack errors
-Error: Process completed with exit code 1.
+  useEffect(() => {
+    if (recipeId) addRecent(recipeId);
+  }, [recipeId, addRecent]);
+
+  if (!recipe) {
+    return (
+      <main className="container-page space-y-6">
+        <Link href="/recipes" className="button-secondary">
+          一覧へ戻る
+        </Link>
+        <p className="text-sm text-slate-500">レシピが見つかりませんでした。</p>
+      </main>
+    );
+  }
+
+  const match = getRecipeMatch(
+    {
+      ...recipe,
+      difficulty: normalizeDifficulty(recipe.difficulty),
+      cuisine: normalizeCuisine(recipe.cuis
