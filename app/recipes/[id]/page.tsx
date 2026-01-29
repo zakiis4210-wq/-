@@ -7,9 +7,20 @@ import recipes from "@/data/recipes.json";
 import { useStore } from "@/store/useStore";
 import { getRecipeMatch, getPantryNames } from "@/lib/recipe";
 
+const normalizeDifficulty = (d: string): "easy" | "normal" | "hard" => {
+  if (d === "easy" || d === "normal" || d === "hard") return d;
+  return "normal";
+};
+
+const normalizeCuisine = (c: string): "jp" | "western" | "chinese" | "other" => {
+  if (c === "jp" || c === "western" || c === "chinese" || c === "other") return c;
+  return "other";
+};
+
 export default function RecipeDetailPage() {
   const params = useParams();
   const recipeId = Array.isArray(params.id) ? params.id[0] : params.id;
+
   const pantryItems = useStore((state) => state.pantryItems);
   const favorites = useStore((state) => state.favorites);
   const toggleFavorite = useStore((state) => state.toggleFavorite);
@@ -35,7 +46,16 @@ export default function RecipeDetailPage() {
     );
   }
 
-  const match = getRecipeMatch(recipe, pantryItems);
+  // ✅ difficulty / cuisine を union 型に正規化してから getRecipeMatch に渡す
+  const match = getRecipeMatch(
+    {
+      ...recipe,
+      difficulty: normalizeDifficulty(recipe.difficulty),
+      cuisine: normalizeCuisine(recipe.cuisine),
+    },
+    pantryItems
+  );
+
   const isFavorite = favorites.includes(recipe.id);
 
   return (
@@ -43,7 +63,9 @@ export default function RecipeDetailPage() {
       <section className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">{recipe.title}</h1>
-          <p className="text-sm text-slate-600">一致度 {match.matchScore}% / {recipe.cookTimeMin}分</p>
+          <p className="text-sm text-slate-600">
+            一致度 {match.matchScore}% / {recipe.cookTimeMin}分
+          </p>
         </div>
         <Link className="button-secondary" href="/recipes">
           一覧へ
@@ -61,6 +83,7 @@ export default function RecipeDetailPage() {
             {isFavorite ? "お気に入り済み" : "お気に入り"}
           </button>
         </div>
+
         <div className="space-y-3">
           {recipe.ingredients.map((ingredient) => {
             const hasItem = pantryNames.has(ingredient.name.trim().toLowerCase());
@@ -78,9 +101,7 @@ export default function RecipeDetailPage() {
                     {ingredient.quantity ? ` ・ ${ingredient.quantity}` : ""}
                   </p>
                 </div>
-                <span className="text-xs font-semibold">
-                  {hasItem ? "ある" : "ない"}
-                </span>
+                <span className="text-xs font-semibold">{hasItem ? "ある" : "ない"}</span>
               </div>
             );
           })}
@@ -97,7 +118,10 @@ export default function RecipeDetailPage() {
               <div key={ingredient} className="rounded-2xl border border-slate-200 p-4">
                 <p className="font-semibold">{ingredient}</p>
                 <p className="text-xs text-slate-500">
-                  代替: {match.substitutes[ingredient]?.length ? match.substitutes[ingredient].join(" / ") : "なし"}
+                  代替:{" "}
+                  {match.substitutes[ingredient]?.length
+                    ? match.substitutes[ingredient].join(" / ")
+                    : "なし"}
                 </p>
               </div>
             ))}
