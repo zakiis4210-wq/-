@@ -1,0 +1,386 @@
+[
+  {
+    "id": "r1",
+    "title": "鶏むねの照り焼き",
+    "ingredients": [
+      { "name": "鶏むね", "required": true, "quantity": "1枚" },
+      { "name": "醤油", "required": true, "quantity": "大さじ2" },
+      { "name": "みりん", "required": true, "quantity": "大さじ1" },
+      { "name": "酒", "required": true, "quantity": "大さじ1" },
+      { "name": "砂糖", "required": false, "quantity": "小さじ1" },
+      { "name": "油", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "鶏むねを食べやすい大きさに切る。",
+      "調味料を混ぜてタレを作る。",
+      "フライパンで鶏むねを焼き、タレを絡める。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["chicken", "meat", "dairy-free"]
+  },
+  {
+    "id": "r2",
+    "title": "鮭のホイル焼き",
+    "ingredients": [
+      { "name": "鮭", "required": true, "quantity": "1切" },
+      { "name": "きのこ", "required": true, "quantity": "1/2パック" },
+      { "name": "バター", "required": true, "quantity": "10g" },
+      { "name": "醤油", "required": false, "quantity": "小さじ1" },
+      { "name": "レモン", "required": false, "quantity": "適量" }
+    ],
+    "steps": [
+      "アルミホイルに鮭ときのこをのせる。",
+      "バターを乗せて包む。",
+      "トースターで15分焼く。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["fish", "dairy"]
+  },
+  {
+    "id": "r3",
+    "title": "豚こまの生姜焼き",
+    "ingredients": [
+      { "name": "豚こま", "required": true, "quantity": "200g" },
+      { "name": "醤油", "required": true, "quantity": "大さじ1" },
+      { "name": "みりん", "required": true, "quantity": "大さじ1" },
+      { "name": "しょうが", "required": true, "quantity": "少々" },
+      { "name": "玉ねぎ", "required": false, "quantity": "1/2個" }
+    ],
+    "steps": [
+      "豚こまを炒める。",
+      "調味料を加えて絡める。",
+      "玉ねぎを加えて仕上げる。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "normal",
+    "cuisine": "jp",
+    "tags": ["pork", "meat"]
+  },
+  {
+    "id": "r4",
+    "title": "野菜たっぷり味噌汁",
+    "ingredients": [
+      { "name": "味噌", "required": true, "quantity": "大さじ2" },
+      { "name": "玉ねぎ", "required": true, "quantity": "1/2個" },
+      { "name": "にんじん", "required": true, "quantity": "1/2本" },
+      { "name": "じゃがいも", "required": true, "quantity": "1個" },
+      { "name": "ねぎ", "required": false, "quantity": "適量" }
+    ],
+    "steps": [
+      "野菜を切る。",
+      "鍋で煮て味噌を溶く。",
+      "ねぎを散らす。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["vegetarian", "dairy-free"]
+  },
+  {
+    "id": "r5",
+    "title": "トマトパスタ",
+    "ingredients": [
+      { "name": "パスタ", "required": true, "quantity": "100g" },
+      { "name": "トマト", "required": true, "quantity": "1個" },
+      { "name": "にんにく", "required": true, "quantity": "1片" },
+      { "name": "オリーブオイル", "required": true, "quantity": "大さじ1" },
+      { "name": "チーズ", "required": false, "quantity": "適量" }
+    ],
+    "steps": [
+      "パスタを茹でる。",
+      "フライパンでトマトソースを作る。",
+      "パスタと和えてチーズをかける。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "normal",
+    "cuisine": "western",
+    "tags": ["vegetarian", "wheat", "dairy"]
+  },
+  {
+    "id": "r6",
+    "title": "ツナマヨおにぎり",
+    "ingredients": [
+      { "name": "ごはん", "required": true, "quantity": "茶碗1杯" },
+      { "name": "ツナ缶", "required": true, "quantity": "1/2缶" },
+      { "name": "マヨネーズ", "required": true, "quantity": "大さじ1" },
+      { "name": "塩", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "ツナとマヨネーズを混ぜる。",
+      "ごはんで包む。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["fish", "egg"]
+  },
+  {
+    "id": "r7",
+    "title": "野菜炒め",
+    "ingredients": [
+      { "name": "キャベツ", "required": true, "quantity": "1/4個" },
+      { "name": "もやし", "required": true, "quantity": "1/2袋" },
+      { "name": "ピーマン", "required": true, "quantity": "1個" },
+      { "name": "油", "required": true, "quantity": "大さじ1" },
+      { "name": "醤油", "required": false, "quantity": "小さじ1" }
+    ],
+    "steps": [
+      "野菜を切る。",
+      "フライパンで炒める。",
+      "調味料で味付けする。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["vegan", "vegetarian", "dairy-free"]
+  },
+  {
+    "id": "r8",
+    "title": "チーズオムレツ",
+    "ingredients": [
+      { "name": "卵", "required": true, "quantity": "2個" },
+      { "name": "チーズ", "required": true, "quantity": "30g" },
+      { "name": "牛乳", "required": true, "quantity": "大さじ1" },
+      { "name": "バター", "required": false, "quantity": "10g" }
+    ],
+    "steps": [
+      "卵と牛乳を混ぜる。",
+      "フライパンで焼き、チーズを入れて巻く。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "western",
+    "tags": ["egg", "dairy", "vegetarian"]
+  },
+  {
+    "id": "r9",
+    "title": "鶏ももカレー",
+    "ingredients": [
+      { "name": "鶏もも", "required": true, "quantity": "200g" },
+      { "name": "玉ねぎ", "required": true, "quantity": "1個" },
+      { "name": "にんじん", "required": true, "quantity": "1本" },
+      { "name": "じゃがいも", "required": true, "quantity": "1個" },
+      { "name": "カレールー", "required": true, "quantity": "2片" }
+    ],
+    "steps": [
+      "具材を炒める。",
+      "水を入れて煮込む。",
+      "ルーを溶かす。"
+    ],
+    "cookTimeMin": 60,
+    "difficulty": "normal",
+    "cuisine": "other",
+    "tags": ["chicken", "meat"]
+  },
+  {
+    "id": "r10",
+    "title": "中華チャーハン",
+    "ingredients": [
+      { "name": "ごはん", "required": true, "quantity": "茶碗1杯" },
+      { "name": "卵", "required": true, "quantity": "1個" },
+      { "name": "ねぎ", "required": true, "quantity": "適量" },
+      { "name": "醤油", "required": true, "quantity": "小さじ1" },
+      { "name": "こしょう", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "卵をごはんと炒める。",
+      "ねぎを加えて味付けする。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "chinese",
+    "tags": ["egg", "wheat-free"]
+  },
+  {
+    "id": "r11",
+    "title": "麻婆豆腐風ひき肉炒め",
+    "ingredients": [
+      { "name": "ひき肉", "required": true, "quantity": "150g" },
+      { "name": "豆腐", "required": true, "quantity": "1丁" },
+      { "name": "醤油", "required": true, "quantity": "大さじ1" },
+      { "name": "にんにく", "required": true, "quantity": "1片" },
+      { "name": "豆板醤", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "ひき肉を炒める。",
+      "豆腐と調味料を加えて煮る。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "normal",
+    "cuisine": "chinese",
+    "tags": ["meat", "soy"]
+  },
+  {
+    "id": "r12",
+    "title": "バター醤油きのこ",
+    "ingredients": [
+      { "name": "きのこ", "required": true, "quantity": "1パック" },
+      { "name": "バター", "required": true, "quantity": "10g" },
+      { "name": "醤油", "required": true, "quantity": "小さじ1" },
+      { "name": "こしょう", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "きのこを炒める。",
+      "バターと醤油で味付けする。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["vegetarian", "dairy"]
+  },
+  {
+    "id": "r13",
+    "title": "ナスとピーマンの味噌炒め",
+    "ingredients": [
+      { "name": "なす", "required": true, "quantity": "1本" },
+      { "name": "ピーマン", "required": true, "quantity": "1個" },
+      { "name": "味噌", "required": true, "quantity": "大さじ1" },
+      { "name": "みりん", "required": true, "quantity": "大さじ1" },
+      { "name": "油", "required": true, "quantity": "大さじ1" }
+    ],
+    "steps": [
+      "野菜を炒める。",
+      "味噌とみりんで味付けする。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["vegan", "vegetarian", "dairy-free"]
+  },
+  {
+    "id": "r14",
+    "title": "クリームパスタ",
+    "ingredients": [
+      { "name": "パスタ", "required": true, "quantity": "100g" },
+      { "name": "牛乳", "required": true, "quantity": "200ml" },
+      { "name": "ベーコン", "required": true, "quantity": "2枚" },
+      { "name": "チーズ", "required": true, "quantity": "20g" },
+      { "name": "こしょう", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "ベーコンを炒める。",
+      "牛乳を加えて煮る。",
+      "パスタを絡める。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "normal",
+    "cuisine": "western",
+    "tags": ["pork", "dairy", "wheat"]
+  },
+  {
+    "id": "r15",
+    "title": "豆腐サラダ",
+    "ingredients": [
+      { "name": "豆腐", "required": true, "quantity": "1/2丁" },
+      { "name": "トマト", "required": true, "quantity": "1/2個" },
+      { "name": "きのこ", "required": false, "quantity": "適量" },
+      { "name": "酢", "required": true, "quantity": "大さじ1" },
+      { "name": "醤油", "required": true, "quantity": "小さじ1" }
+    ],
+    "steps": [
+      "豆腐と野菜を切る。",
+      "調味料をかける。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "other",
+    "tags": ["vegan", "soy", "dairy-free"]
+  },
+  {
+    "id": "r16",
+    "title": "キャベツとベーコンのスープ",
+    "ingredients": [
+      { "name": "キャベツ", "required": true, "quantity": "1/4個" },
+      { "name": "ベーコン", "required": true, "quantity": "2枚" },
+      { "name": "玉ねぎ", "required": true, "quantity": "1/4個" },
+      { "name": "塩", "required": true, "quantity": "少々" },
+      { "name": "こしょう", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "具材を鍋で煮る。",
+      "塩こしょうで味付けする。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "cuisine": "western",
+    "tags": ["pork", "meat"]
+  },
+  {
+    "id": "r17",
+    "title": "鮭ときのこのホットサンド",
+    "ingredients": [
+      { "name": "食パン", "required": true, "quantity": "2枚" },
+      { "name": "鮭", "required": true, "quantity": "1切" },
+      { "name": "チーズ", "required": true, "quantity": "20g" },
+      { "name": "バター", "required": false, "quantity": "適量" }
+    ],
+    "steps": [
+      "鮭を焼いてほぐす。",
+      "食パンに具材を挟み焼く。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "normal",
+    "cuisine": "western",
+    "tags": ["fish", "dairy", "wheat"]
+  },
+  {
+    "id": "r18",
+    "title": "簡単うどん",
+    "ingredients": [
+      { "name": "うどん", "required": true, "quantity": "1玉" },
+      { "name": "醤油", "required": true, "quantity": "小さじ2" },
+      { "name": "みりん", "required": true, "quantity": "小さじ1" },
+      { "name": "ねぎ", "required": false, "quantity": "適量" },
+      { "name": "卵", "required": false, "quantity": "1個" }
+    ],
+    "steps": [
+      "うどんを茹でる。",
+      "つゆを作って合わせる。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "jp",
+    "tags": ["wheat", "egg"]
+  },
+  {
+    "id": "r19",
+    "title": "トマトとチーズのトースト",
+    "ingredients": [
+      { "name": "食パン", "required": true, "quantity": "1枚" },
+      { "name": "トマト", "required": true, "quantity": "1/2個" },
+      { "name": "チーズ", "required": true, "quantity": "20g" },
+      { "name": "オリーブオイル", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "食パンにトマトとチーズをのせる。",
+      "トースターで焼く。"
+    ],
+    "cookTimeMin": 15,
+    "difficulty": "easy",
+    "cuisine": "western",
+    "tags": ["vegetarian", "dairy", "wheat"]
+  },
+  {
+    "id": "r20",
+    "title": "野菜たっぷり中華スープ",
+    "ingredients": [
+      { "name": "キャベツ", "required": true, "quantity": "1/4個" },
+      { "name": "にんじん", "required": true, "quantity": "1/3本" },
+      { "name": "ねぎ", "required": true, "quantity": "適量" },
+      { "name": "醤油", "required": true, "quantity": "小さじ1" },
+      { "name": "ごま油", "required": false, "quantity": "少々" }
+    ],
+    "steps": [
+      "野菜を切る。",
+      "鍋で煮て味付けする。"
+    ],
+    "cookTimeMin": 30,
+    "difficulty": "easy",
+    "cuisine": "chinese",
+    "tags": ["vegan", "dairy-free"]
+  }
+]
