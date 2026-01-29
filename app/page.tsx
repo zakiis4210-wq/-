@@ -10,6 +10,11 @@ const normalizeDifficulty = (d: string): "easy" | "normal" | "hard" => {
   return "normal";
 };
 
+const normalizeCuisine = (c: string): "jp" | "western" | "chinese" | "other" => {
+  if (c === "jp" || c === "western" || c === "chinese" || c === "other") return c;
+  return "other";
+};
+
 export default function HomePage() {
   const pantryItems = useStore((state) => state.pantryItems);
   const filters = useStore((state) => state.filters);
@@ -103,9 +108,12 @@ export default function HomePage() {
         ) : (
           <div className="space-y-3">
             {recentRecipes.map((recipe) => {
-              // ✅ difficulty を union 型に正規化してから渡す
               const match = getRecipeMatch(
-                { ...recipe, difficulty: normalizeDifficulty(recipe.difficulty) },
+                {
+                  ...recipe,
+                  difficulty: normalizeDifficulty(recipe.difficulty),
+                  cuisine: normalizeCuisine(recipe.cuisine),
+                },
                 pantryItems
               );
 
@@ -141,9 +149,12 @@ export default function HomePage() {
         ) : (
           <div className="space-y-3">
             {favoriteRecipes.map((recipe) => {
-              // ✅ ここも同じく正規化してから渡す
               const match = getRecipeMatch(
-                { ...recipe, difficulty: normalizeDifficulty(recipe.difficulty) },
+                {
+                  ...recipe,
+                  difficulty: normalizeDifficulty(recipe.difficulty),
+                  cuisine: normalizeCuisine(recipe.cuisine),
+                },
                 pantryItems
               );
 
